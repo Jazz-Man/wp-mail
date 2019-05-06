@@ -173,6 +173,11 @@ function wp_mail($to, $subject, $message, $headers = '', $attachments = [])
     $phpmailer->clearCustomHeaders();
     $phpmailer->clearReplyTos();
 
+    if (WP_DEBUG && (defined('WP_MAIL_SMTP_DEBUG') && WP_MAIL_SMTP_DEBUG)) {
+        $phpmailer->Debugoutput = 'error_log';
+        $phpmailer->SMTPDebug = defined('WP_MAIL_SMTP_DEBUG_LEVEL') ? WP_MAIL_SMTP_DEBUG_LEVEL : 1;
+    }
+
     // From email and name
     // If we don't have a name from the input headers
     if (!isset($from_name)) {
@@ -187,13 +192,17 @@ function wp_mail($to, $subject, $message, $headers = '', $attachments = [])
      */
 
     if (!isset($from_email)) {
-        // Get the site domain and get rid of www.
-        $sitename = strtolower($_SERVER['SERVER_NAME']);
-        if (0 === strpos($sitename, 'www.')) {
-            $sitename = substr($sitename, 4);
-        }
+        $admin_email = get_bloginfo('admin_email');
 
-        $from_email = 'wordpress@'.$sitename;
+        if (!empty($admin_email)) {
+            $from_email = $admin_email;
+        } else {
+            // Get the site domain and get rid of www.
+            $sitename = strtolower($_SERVER['SERVER_NAME']);
+            $sitename = ltrim($sitename, 'www.');
+
+            $from_email = "wordpress@{$sitename}";
+        }
     }
 
     /**
@@ -287,12 +296,8 @@ function wp_mail($to, $subject, $message, $headers = '', $attachments = [])
         $phpmailer->Password = $dsn->pass;
         $phpmailer->SMTPSecure = $dsn->scheme;
 
-        if (defined('WP_MAIL_SMTP_FROM')) {
-            $phpmailer->From = WP_MAIL_SMTP_FROM;
-        }
-        if (defined('WP_MAIL_SMTP_FROM_NAME')) {
-            $phpmailer->FromName = WP_MAIL_SMTP_FROM_NAME;
-        }
+        $phpmailer->From = defined('WP_MAIL_SMTP_FROM') ? WP_MAIL_SMTP_FROM : get_bloginfo('admin_email');
+        $phpmailer->FromName = defined('WP_MAIL_SMTP_FROM_NAME') ? WP_MAIL_SMTP_FROM_NAME : get_bloginfo('name');
     } else {
         // Set to use PHP's mail()
         $phpmailer->isMail();
