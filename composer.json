@@ -29,5 +29,10 @@
             "vendor/wp/wp-content/themes/{$name}/": ["type:wordpress-theme"]
         },
         "wordpress-install-dir": "vendor/wp"
+    },
+    "autoload": {
+        "files": [
+            "wp-mail.php"
+        ]
     }
 }
