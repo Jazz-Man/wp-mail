@@ -1,0 +1,33 @@
+{
+    "name": "jazzman/wp-mail",
+    "authors": [
+        {
+            "name": "Vasyl Sokolyk",
+            "email": "vsokolyk@gmail.com"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "optimize-autoloader": true,
+        "classmap-authoritative": true,
+        "apcu-autoloader": true
+    },
+    "require": {
+        "php": ">=7.1",
+        "phpmailer/phpmailer": "^6.0"
+    },
+    "require-dev": {
+        "dg/composer-cleaner": "^2.1",
+        "roave/security-advisories": "dev-master",
+        "roots/wordpress": "^5.1"
+    },
+    "extra": {
+        "installer-paths": {
+            "vendor/wp/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+            "vendor/wp/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+            "vendor/wp/wp-content/themes/{$name}/": ["type:wordpress-theme"]
+        },
+        "wordpress-install-dir": "vendor/wp"
+    }
+}
