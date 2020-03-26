@@ -128,6 +128,8 @@ class WPMail extends PHPMailer
 
         $headers = explode(self::CRLF, $headers);
 
+        $headers = array_filter($headers);
+
         $_headers = [];
 
         foreach ($headers as $header) {
