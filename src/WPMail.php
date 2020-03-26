@@ -40,7 +40,13 @@ class WPMail extends PHPMailer
     private function setSmtpConfig()
     {
         if (!\defined('WP_MAIL_SMTP_URL')) {
-            throw new Exception("'WP_MAIL_SMTP_URL' no defined");
+
+            $error_message = "'WP_MAIL_SMTP_URL' no defined";
+
+            $this->setError($error_message);
+            $this->edebug($error_message);
+
+            throw new Exception($error_message);
         }
 
         $dsn = (object) parse_url(WP_MAIL_SMTP_URL);
@@ -55,7 +61,7 @@ class WPMail extends PHPMailer
         $this->SMTPSecure = $dsn->scheme;
 
         if (WP_DEBUG && (\defined('WP_MAIL_SMTP_DEBUG') && WP_MAIL_SMTP_DEBUG)) {
-            $this->Debugoutput = 'echo';
+            $this->Debugoutput = 'error_log';
             $this->SMTPDebug = \defined('WP_MAIL_SMTP_DEBUG_LEVEL') ? WP_MAIL_SMTP_DEBUG_LEVEL : 1;
         }
     }
