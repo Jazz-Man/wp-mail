@@ -2,7 +2,6 @@
 
 use JazzMan\WPMail\WPMail;
 use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\PHPMailer;
 
 /**
  * Send mail, similar to PHP's mail.
@@ -35,7 +34,7 @@ use PHPMailer\PHPMailer\PHPMailer;
  *
  * @since 1.2.1
  *
- * @global PHPMailer   $phpmailer
+ * @global WPMail   $phpmailer
  */
 function wp_mail($to, $subject, $message, $headers = '', $attachments = [])
 {
