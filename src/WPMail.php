@@ -36,34 +36,36 @@ class WPMail extends PHPMailer
     /**
      * Formats recipient email.
      *
-     * @param string      $email
-     * @param string|null $name
+     * @param string|array $address
+     * @param string|null $recipient
      *
      * @return array
      */
-    public function formatEmail(string $email, string $name = null)
+    public function formatEmail($address, $recipient = null)
     {
         $emails = [];
 
-        $bracket_pos = '/^.*[>].*[,].*$/';
+        if (!\is_array($address)) {
+            $address = explode(',', $address);
+        }
 
-        preg_match($bracket_pos, $email, $matches);
-
-        if (!empty($matches)) {
-            $_content = explode('>', $email);
-            $_content = array_filter($_content);
-
-            foreach ($_content as $item) {
-                $item = ltrim($item, ',');
-                $item .= '>';
-
-                $emails[] = $this->parseEmail($item, $name);
+        foreach ($address as $item) {
+            if ($email = $this->parseEmail($item, $recipient)) {
+                $emails[] = $email;
             }
-        } else {
-            $emails[] = $this->parseEmail($email, $name);
         }
 
         return $emails;
+    }
+
+    /**
+     * @param string|null $string
+     *
+     * @return string
+     */
+    public function trim($string = '')
+    {
+        return trim(preg_replace('/\s{2,}/siu', ' ', $string));
     }
 
     /**
@@ -86,7 +88,7 @@ class WPMail extends PHPMailer
         $_headers = [];
 
         foreach ($headers as $header) {
-            [$name, $content] = explode(':', trim($header), 2);
+            [$name, $content] = explode(':', $this->trim($header), 2);
 
             $name = trim($name);
             $content = trim($content);
@@ -129,17 +131,25 @@ class WPMail extends PHPMailer
     }
 
     /**
-     * @param string      $email
+     * @param string $email
      * @param string|null $name
-     * @return array
+     *
+     * @return array|bool
      */
-    private function parseEmail(string $email, string $name = null)
+    private function parseEmail($email, $name = null)
     {
         if (!$name && preg_match('/(?<name>.+)?<(?<email>(.+))>/', $email, $matches)) {
             $name = !empty($matches['name']) ? trim($matches['name']) : '';
             $email = !empty($matches['email']) ? trim($matches['email']) : '';
         }
 
-        return compact('name', 'email');
+        $email = $this->trim($email);
+        $name = $this->trim($name);
+
+        if (self::validateAddress($email)) {
+            return compact('name', 'email');
+        }
+
+        return false;
     }
 }
