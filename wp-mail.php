@@ -34,7 +34,7 @@ use PHPMailer\PHPMailer\Exception;
  *
  * @since 1.2.1
  *
- * @global WPMail   $phpmailer
+ * @global WPMail      $phpmailer
  */
 function wp_mail($to, $subject, $message, $headers = '', $attachments = [])
 {
@@ -72,6 +72,7 @@ function wp_mail($to, $subject, $message, $headers = '', $attachments = [])
         $attachments = explode("\n", str_replace("\r\n", "\n", $attachments));
     }
 
+    /* @var WPMail $phpmailer */
     global $phpmailer;
 
     $phpmailer = new WPMail();
@@ -88,6 +89,21 @@ function wp_mail($to, $subject, $message, $headers = '', $attachments = [])
 
             foreach ($headers as $header => $content) {
                 switch ($header) {
+                    case 'content-type':
+                        if (false !== strpos($content, ';')) {
+                            [$type, $charset_content] = explode(';', $content);
+                            $content_type = $phpmailer->trim($type);
+                            if (false !== stripos($charset_content, 'charset=')) {
+                                $charset = $phpmailer->trim(str_replace(['charset=', '"'], '', $charset_content));
+                            } elseif (false !== stripos($charset_content, 'boundary=')) {
+                                $charset = '';
+                            }
+
+                            // Avoid setting an empty $content_type.
+                        } elseif ('' !== $phpmailer->trim($content)) {
+                            $content_type = $phpmailer->trim($content);
+                        }
+                        break;
                     case 'from':
                         $from = $phpmailer->formatEmail($content);
 
@@ -131,7 +147,8 @@ function wp_mail($to, $subject, $message, $headers = '', $attachments = [])
         }
 
         // Set mail's subject and body
-        $phpmailer->Subject = $subject;
+        $phpmailer->Subject = $phpmailer->trim($subject);
+
         $phpmailer->msgHTML($message);
 
         if ('root@localhost' === $phpmailer->From) {
@@ -145,7 +162,7 @@ function wp_mail($to, $subject, $message, $headers = '', $attachments = [])
                 $sitename = strtolower($_SERVER['SERVER_NAME']);
                 $sitename = ltrim($sitename, 'www.');
 
-                $from_email = "wordpress@{$sitename}";
+                $from_email = "website@{$sitename}";
             }
 
             $from_email = apply_filters('wp_mail_from', $from_email);
@@ -160,6 +177,30 @@ function wp_mail($to, $subject, $message, $headers = '', $attachments = [])
                 $phpmailer->addAttachment($attachment);
             }
         }
+
+        // Set Content-Type and charset
+        // If we don't have a content-type from the input headers
+        if (!isset($content_type)) {
+            $content_type = $phpmailer::CONTENT_TYPE_PLAINTEXT;
+        }
+
+        /**
+         * Filters the wp_mail() content type.
+         *
+         * @since 2.3.0
+         *
+         * @param string $content_type default wp_mail() content type
+         */
+        $content_type = apply_filters('wp_mail_content_type', $content_type);
+
+        $phpmailer->ContentType = $content_type;
+
+        // If we don't have a charset from the input headers
+        if (!isset($charset)) {
+            $charset = get_bloginfo('charset');
+        }
+
+        $phpmailer->CharSet = apply_filters('wp_mail_charset', $charset);
 
         /*
          * Fires after PHPMailer is initialized.
