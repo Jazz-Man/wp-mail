@@ -105,24 +105,42 @@ class WPMail extends PHPMailer
     private function setSmtpConfig()
     {
         if (!\defined('WP_MAIL_SMTP_URL')) {
-            $error_message = "'WP_MAIL_SMTP_URL' no defined";
-
-            $this->setError($error_message);
-            $this->edebug($error_message);
-
-            throw new Exception($error_message);
+            $this->addErrore("'WP_MAIL_SMTP_URL' no defined");
         }
 
         $dsn = (object) parse_url(WP_MAIL_SMTP_URL);
 
         $this->isSMTP();
-        $this->Host = $dsn->host;
-        $this->Port = $dsn->port;
-        $this->Username = $dsn->user;
-        $this->Password = $dsn->pass;
-        $this->SMTPAuth = true;
 
-        $this->SMTPSecure = $dsn->scheme;
+        if (empty($dsn->host)){
+            $this->addErrore($this->lang('invalid_host'));
+        }
+
+        $this->Host = $dsn->host;
+
+        if (!empty($dsn->port)){
+            $this->Port = $dsn->port;
+        }
+
+        if (!empty($dsn->scheme)){
+            $this->SMTPSecure = $dsn->scheme;
+        }
+
+        $add_smtp_auth = false;
+
+        if (!empty($dsn->user)){
+            $this->Username = $dsn->user;
+            $add_smtp_auth = true;
+        }
+
+        if (!empty($dsn->pass)){
+            $this->Password = $dsn->pass;
+            $add_smtp_auth = true;
+        }
+
+        if ($add_smtp_auth){
+            $this->SMTPAuth = true;
+        }
 
         if (WP_DEBUG && (\defined('WP_MAIL_SMTP_DEBUG') && WP_MAIL_SMTP_DEBUG)) {
             $this->Debugoutput = 'error_log';
@@ -151,5 +169,15 @@ class WPMail extends PHPMailer
         }
 
         return false;
+    }
+
+    protected function addErrore(string $str){
+
+        $this->setError($str);
+        $this->edebug($str);
+
+        if ($this->exceptions) {
+            throw new Exception($str);
+        }
     }
 }
