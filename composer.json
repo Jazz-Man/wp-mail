@@ -20,7 +20,7 @@
     "require-dev": {
         "dg/composer-cleaner": "^2.1",
         "roave/security-advisories": "dev-master",
-        "roots/wordpress": "^5.1"
+        "roots/wordpress": "^6.0"
     },
     "extra": {
         "installer-paths": {
