@@ -1,0 +1,116 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Cannot access property \\$CharSet on PHPMailer\\\\PHPMailer\\\\PHPMailer\\|null\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Cannot access property \\$ContentType on PHPMailer\\\\PHPMailer\\\\PHPMailer\\|null\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Cannot access property \\$Subject on PHPMailer\\\\PHPMailer\\\\PHPMailer\\|null\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Cannot call method DKIM_HeaderC\\(\\) on PHPMailer\\\\PHPMailer\\\\PHPMailer\\|null\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Cannot call method addAttachment\\(\\) on PHPMailer\\\\PHPMailer\\\\PHPMailer\\|null\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Cannot call method addBCC\\(\\) on PHPMailer\\\\PHPMailer\\\\PHPMailer\\|null\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Cannot call method addCC\\(\\) on PHPMailer\\\\PHPMailer\\\\PHPMailer\\|null\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Cannot call method addCustomHeader\\(\\) on PHPMailer\\\\PHPMailer\\\\PHPMailer\\|null\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Cannot call method addReplyTo\\(\\) on PHPMailer\\\\PHPMailer\\\\PHPMailer\\|null\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Cannot call method msgHTML\\(\\) on PHPMailer\\\\PHPMailer\\\\PHPMailer\\|null\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Cannot call method send\\(\\) on PHPMailer\\\\PHPMailer\\\\PHPMailer\\|null\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Cannot call method setFrom\\(\\) on PHPMailer\\\\PHPMailer\\\\PHPMailer\\|null\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Default value of the parameter \\#2 \\$atts \\(array\\{\\}\\) of method JazzMan\\\\WPMail\\\\WPMail\\:\\:mail\\(\\) is incompatible with type array\\{to\\: array\\|string\\|null, subject\\: string\\|null, message\\: string\\|null, headers\\: array\\|string\\|null, attachments\\: array\\|string\\|null\\}\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Method JazzMan\\\\WPMail\\\\WPMail\\:\\:addMailHeaders\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Method JazzMan\\\\WPMail\\\\WPMail\\:\\:formatEmail\\(\\) has parameter \\$address with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Method JazzMan\\\\WPMail\\\\WPMail\\:\\:mail\\(\\) has parameter \\$atts with no value type specified in iterable type array\\.$#"
+			count: 3
+			path: src/WPMail.php
+
+		-
+			message: "#^Method JazzMan\\\\WPMail\\\\WPMail\\:\\:mail\\(\\) should return bool but returns bool\\|null\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Method JazzMan\\\\WPMail\\\\WPMail\\:\\:parseHeaders\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^PHPDoc tag @var with type array\\<string, mixed\\>\\|false is not subtype of native type mixed\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^PHPDoc tag @var with type array\\<string\\>\\|string is not subtype of native type mixed\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^PHPDoc tag @var with type string\\|false is not subtype of native type mixed\\.$#"
+			count: 2
+			path: src/WPMail.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strtolower expects string, string\\|false\\|null given\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: src/WPMail.php

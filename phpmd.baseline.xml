@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<phpmd-baseline>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="src/WPMail.php"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="src/WPMail.php" method="mail"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="src/WPMail.php" method="mail"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="src/WPMail.php" method="init"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="src/WPMail.php" method="init"/>
+  <violation rule="PHPMD\Rule\Design\EmptyCatchBlock" file="src/WPMail.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\ElseExpression" file="src/WPMail.php"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="src/WPMail.php" method="addMailHeaders"/>
+</phpmd-baseline>
