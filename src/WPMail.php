@@ -88,7 +88,6 @@ final class WPMail implements AutoloadInterface {
             $this->phpmailer->CharSet = apply_filters( 'wp_mail_charset', $this->charset );
 
             return $this->phpmailer->send();
-
         } catch ( Exception $errore ) {
             $mail_error_data = compact( 'target', 'subject', 'message', 'headers', 'attachments' );
             $mail_error_data['phpmailer_exception_code'] = $errore->getCode();
@@ -103,10 +102,9 @@ final class WPMail implements AutoloadInterface {
              */
             do_action( 'wp_mail_failed', new WP_Error( 'wp_mail_failed', $errore->getMessage(), $mail_error_data ) );
 
-            if ( defined('WP_DEBUG') && WP_DEBUG ) {
+            if ( \defined( 'WP_DEBUG' ) && WP_DEBUG ) {
                 error_log( $errore );
             }
-
         }
 
         return true;
@@ -177,7 +175,7 @@ final class WPMail implements AutoloadInterface {
         }
     }
 
-    private function addMailHeaders( array $headers ): void {
+    private function addMailHeaders( array|string $headers ): void {
         $headers = $this->parseHeaders( $headers );
 
         foreach ( $headers as $header => $content ) {
