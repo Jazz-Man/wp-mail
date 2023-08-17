@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<phpmd-baseline>
+  <violation rule="PHPMD\Rule\CleanCode\IfStatementAssignment" file="src/WPMail.php" method="formatEmail"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="src/WPMail.php" method="setSmtpConfig"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="src/WPMail.php" method="setSmtpConfig"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="wp-mail.php"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="wp-mail.php"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="wp-mail.php"/>
+  <violation rule="PHPMD\Rule\Controversial\Superglobals" file="wp-mail.php"/>
+  <violation rule="PHPMD\Rule\Naming\ShortVariable" file="wp-mail.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\ElseExpression" file="wp-mail.php"/>
+</phpmd-baseline>

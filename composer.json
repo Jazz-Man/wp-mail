@@ -23,6 +23,7 @@
     "require-dev": {
         "jazzman/php-cs-fixer-rules": "^0.2.0",
         "jetbrains/phpstorm-attributes": "^1.0",
+        "php-stubs/wordpress-stubs": "^6.3",
         "roave/security-advisories": "@dev",
         "roots/wordpress": "^6.3"
     },
@@ -41,5 +42,36 @@
         "files": [
             "wp-mail.php"
         ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "vendor/wp"
+        ]
+    },
+    "scripts": {
+        "rm-cache" : [
+            "phpstan clear-result-cache",
+            "psalm --clear-cache",
+            "psalm --clear-global-cache"
+        ],
+        "init-baseline": [
+            "@init-baseline-phpmd",
+            "@init-baseline-psalm",
+            "@baseline-phpstan"
+        ],
+        "update-baseline": [
+            "@update-baseline-phpmd",
+            "@baseline-phpstan",
+            "@update-baseline-psalm"
+        ],
+        "init-baseline-phpmd": "@phpmd --generate-baseline",
+        "update-baseline-phpmd": "@phpmd --update-baseline",
+        "init-baseline-psalm": "@psalm --set-baseline=psalm-baseline.xml",
+        "update-baseline-psalm": "@psalm --update-baseline=psalm-baseline.xml",
+        "baseline-phpstan": "@phpstan --generate-baseline=phpstan-baseline.neon",
+        "phpstan": "phpstan --no-progress",
+        "phpmd": "phpmd . text phpmd.ruleset.xml --exclude 'cache/*,vendor/*,sample.php'",
+        "psalm": "psalm --config=psalm.xml --show-info=true --stats --no-progress",
+        "php-cs-fixer": "php-cs-fixer fix -vvv --diff"
     }
 }

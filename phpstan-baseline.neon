@@ -1,0 +1,161 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Constant WP_DEBUG not found\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Constant WP_MAIL_SMTP_URL not found\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Method JazzMan\\\\WPMail\\\\WPMail\\:\\:addErrore\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Method JazzMan\\\\WPMail\\\\WPMail\\:\\:formatEmail\\(\\) has parameter \\$address with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Method JazzMan\\\\WPMail\\\\WPMail\\:\\:formatEmail\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Method JazzMan\\\\WPMail\\\\WPMail\\:\\:parseEmail\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Method JazzMan\\\\WPMail\\\\WPMail\\:\\:parseHeaders\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Method JazzMan\\\\WPMail\\\\WPMail\\:\\:parseHeaders\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Method JazzMan\\\\WPMail\\\\WPMail\\:\\:setSmtpConfig\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Property PHPMailer\\\\PHPMailer\\\\PHPMailer\\:\\:\\$CharSet \\(string\\) does not accept mixed\\.$#"
+			count: 1
+			path: src/WPMail.php
+
+		-
+			message: "#^Cannot access offset 'attachments' on mixed\\.$#"
+			count: 2
+			path: wp-mail.php
+
+		-
+			message: "#^Cannot access offset 'headers' on mixed\\.$#"
+			count: 2
+			path: wp-mail.php
+
+		-
+			message: "#^Cannot access offset 'message' on mixed\\.$#"
+			count: 2
+			path: wp-mail.php
+
+		-
+			message: "#^Cannot access offset 'subject' on mixed\\.$#"
+			count: 2
+			path: wp-mail.php
+
+		-
+			message: "#^Cannot access offset 'to' on mixed\\.$#"
+			count: 2
+			path: wp-mail.php
+
+		-
+			message: "#^Constant WP_DEBUG not found\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Function wp_mail\\(\\) has parameter \\$attachments with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Function wp_mail\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Function wp_mail\\(\\) has parameter \\$to with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Parameter \\#1 \\$address of method JazzMan\\\\WPMail\\\\WPMail\\:\\:formatEmail\\(\\) expects array\\|string, mixed given\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Parameter \\#1 \\$address of method PHPMailer\\\\PHPMailer\\\\PHPMailer\\:\\:setFrom\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Parameter \\#1 \\$headers of method JazzMan\\\\WPMail\\\\WPMail\\:\\:parseHeaders\\(\\) expects array\\|string, mixed given\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Parameter \\#1 \\$message of method PHPMailer\\\\PHPMailer\\\\PHPMailer\\:\\:msgHTML\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Parameter \\#1 \\$path of method PHPMailer\\\\PHPMailer\\\\PHPMailer\\:\\:addAttachment\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strtolower expects string, mixed given\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of method JazzMan\\\\WPMail\\\\WPMail\\:\\:trim\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Parameter \\#2 \\$name of method PHPMailer\\\\PHPMailer\\\\PHPMailer\\:\\:setFrom\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, mixed given\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Property PHPMailer\\\\PHPMailer\\\\PHPMailer\\:\\:\\$CharSet \\(string\\) does not accept mixed\\.$#"
+			count: 1
+			path: wp-mail.php
+
+		-
+			message: "#^Property PHPMailer\\\\PHPMailer\\\\PHPMailer\\:\\:\\$ContentType \\(string\\) does not accept mixed\\.$#"
+			count: 1
+			path: wp-mail.php

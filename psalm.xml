@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<psalm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="https://getpsalm.org/schema/config"
+       xsi:schemaLocation="https://getpsalm.org/schema/config"
+       serializer="igbinary"
+       errorLevel="1"
+       phpVersion="8.2"
+       addParamDefaultToDocblockType="true"
+    errorBaseline="psalm-baseline.xml"
+>
+    <projectFiles>
+        <directory name="src"/>
+        <file name="wp-mail.php" />
+        <ignoreFiles>
+            <directory name="vendor"/>
+            <file name=".php-cs-fixer.php"/>
+        </ignoreFiles>
+    </projectFiles>
+
+    <stubs>
+        <file name="vendor/php-stubs/wordpress-stubs/wordpress-stubs.php"/>
+    </stubs>
+    <globals>
+        <var name="ABSPATH" type="string"/>
+        <var name="WP_DEBUG" type="bool"/>
+        <var name="wpdb" type="\wpdb"/>
+        <var name="post" type="\WP_Post|null"/>
+        <var name="current_screen" type="\WP_Screen|null"/>
+        <var name="post_type" type="string|null"/>
+        <var name="post_type_object" type="null|\WP_Post_Type"/>
+    </globals>
+    <forbiddenFunctions>
+        <function name="var_dump" />
+        <function name="dump" />
+        <function name="dd" />
+    </forbiddenFunctions>
+</psalm>
