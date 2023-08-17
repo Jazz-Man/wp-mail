@@ -11,14 +11,16 @@
         "preferred-install": "dist",
         "optimize-autoloader": true,
         "classmap-authoritative": true,
-        "apcu-autoloader": true
+        "apcu-autoloader": true,
+        "allow-plugins": {
+            "roots/wordpress-core-installer": true
+        }
     },
     "require": {
         "php": ">=7.1",
         "phpmailer/phpmailer": "^6.1"
     },
     "require-dev": {
-        "dg/composer-cleaner": "^2.1",
         "roave/security-advisories": "dev-master",
         "roots/wordpress": "^5.1"
     },
