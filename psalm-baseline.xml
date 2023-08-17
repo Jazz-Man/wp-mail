@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.13.1@086b94371304750d1c673315321a55d15fc59015">
+  <file src="src/WPMail.php">
+    <ImplicitToStringCast>
+      <code>$e</code>
+    </ImplicitToStringCast>
+    <InvalidNullableReturnType>
+      <code>bool</code>
+    </InvalidNullableReturnType>
+    <InvalidParamDefault>
+      <code>array{to: string|array|null, subject: string|null, message: string|null, headers: string|array|null, attachments: string|array|null}</code>
+    </InvalidParamDefault>
+    <MissingClosureParamType>
+      <code>$email</code>
+    </MissingClosureParamType>
+    <MissingConstructor>
+      <code>$phpmailer</code>
+    </MissingConstructor>
+    <MixedArgument>
+      <code>$attachment</code>
+      <code>$email</code>
+      <code>$item</code>
+      <code>$sitename</code>
+      <code>WP_MAIL_SMTP_URL</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code>$headers</code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment>
+      <code>$attachment</code>
+      <code>$item</code>
+      <code>$sitename</code>
+      <code><![CDATA[$this->phpmailer->CharSet]]></code>
+      <code><![CDATA[$this->phpmailer->ContentType]]></code>
+      <code><![CDATA[$this->phpmailer->SMTPDebug]]></code>
+    </MixedAssignment>
+    <MixedReturnTypeCoercion>
+      <code><![CDATA[array<array-key,array{name:string, address: string}>]]></code>
+      <code>array_merge( ...$emails )</code>
+    </MixedReturnTypeCoercion>
+    <NullableReturnStatement>
+      <code>$return</code>
+    </NullableReturnStatement>
+    <PossiblyNullArgument>
+      <code>$string</code>
+    </PossiblyNullArgument>
+    <PossiblyNullReference>
+      <code>DKIM_HeaderC</code>
+      <code>addBCC</code>
+      <code>addCC</code>
+      <code>addCustomHeader</code>
+      <code>addReplyTo</code>
+      <code>setFrom</code>
+    </PossiblyNullReference>
+    <PossiblyUndefinedArrayOffset>
+      <code>$content</code>
+    </PossiblyUndefinedArrayOffset>
+    <RedundantCastGivenDocblockType>
+      <code><![CDATA[(string) $item['address']]]></code>
+      <code><![CDATA[(string) $item['name']]]></code>
+    </RedundantCastGivenDocblockType>
+    <UndefinedConstant>
+      <code>WP_DEBUG</code>
+    </UndefinedConstant>
+  </file>
+</files>
