@@ -14,3 +14,5 @@ composer.phar
 composer.lock
 /.php[_|-]cs*.cache
 !.github/
+/wp/
+!/wp/.gitkeep

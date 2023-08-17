@@ -6,13 +6,14 @@
        errorLevel="1"
        phpVersion="8.2"
        addParamDefaultToDocblockType="true"
-    errorBaseline="psalm-baseline.xml"
+       errorBaseline="psalm-baseline.xml"
 >
     <projectFiles>
         <directory name="src"/>
         <file name="wp-mail.php" />
         <ignoreFiles>
             <directory name="vendor"/>
+            <directory name="wp" />
             <file name=".php-cs-fixer.php"/>
         </ignoreFiles>
     </projectFiles>
@@ -22,6 +23,12 @@
     </stubs>
     <globals>
         <var name="ABSPATH" type="string"/>
+        <var name="WP_MAIL_SMTP_URL" type="string|null"/>
+        <var name="WP_MAIL_SMTP_PASSWORD" type="string|null"/>
+        <var name="WP_MAIL_SMTP_USERNAME" type="string|null"/>
+        <var name="WP_MAIL_SMTP_SECURE" type="string|null"/>
+        <var name="WP_MAIL_SMTP_HOST" type="string|null"/>
+        <var name="WP_MAIL_SMTP_PORT" type="int|null"/>
         <var name="WP_DEBUG" type="bool"/>
         <var name="wpdb" type="\wpdb"/>
         <var name="post" type="\WP_Post|null"/>

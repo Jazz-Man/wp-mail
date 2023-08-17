@@ -1,5 +1,5 @@
 includes:
-#    - %currentWorkingDirectory%/phpstan-baseline.neon
+    - %currentWorkingDirectory%/phpstan-baseline.neon
 
 parameters:
 	level: max
@@ -8,7 +8,8 @@ parameters:
 	fileExtensions:
 	    - php
 	excludePaths:
-	    - .php-cs-fixer.php
+	    - %currentWorkingDirectory%/.php-cs-fixer.php
+	    - %currentWorkingDirectory%/wp/
 	paths:
 	    - %currentWorkingDirectory%/src/
 	    - %currentWorkingDirectory%/wp-mail.php
